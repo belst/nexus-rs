@@ -40,6 +40,9 @@ pub use self::{
 pub use imgui;
 pub use nexus_codegen::export;
 
+#[cfg(feature = "arcdps")]
+pub use arcdps;
+
 /// Returns the Nexus [`AddonApi`] instance.
 ///
 /// Panics if called before initialization.
