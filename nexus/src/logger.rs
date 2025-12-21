@@ -1,4 +1,4 @@
-use crate::log::{log as nexus_log, LogLevel};
+use crate::log::{LogLevel, log as nexus_log};
 use log::Log;
 
 impl From<log::Level> for LogLevel {

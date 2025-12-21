@@ -1,7 +1,7 @@
 use crate::addon::AddonInfo;
 use proc_macro2::TokenStream;
 use quote::{quote, quote_spanned};
-use syn::{spanned::Spanned, Expr, Lit};
+use syn::{Expr, Lit, spanned::Spanned};
 
 impl AddonInfo {
     pub fn generate_log_filter(&self) -> TokenStream {

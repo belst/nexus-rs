@@ -28,7 +28,7 @@ pub mod extras;
 pub mod rtapi;
 
 use super::EventApi;
-use crate::{revertible::Revertible, util::str_to_c, AddonApi};
+use crate::{AddonApi, revertible::Revertible, util::str_to_c};
 use std::{
     ffi::{c_char, c_void},
     marker::PhantomData,

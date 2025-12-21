@@ -1,6 +1,6 @@
 //! Windows [WNDPROC](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nc-winuser-wndproc).
 
-use crate::{revertible::Revertible, AddonApi, WndProcApi};
+use crate::{AddonApi, WndProcApi, revertible::Revertible};
 use windows::Win32::Foundation::{HWND, LPARAM, LRESULT, WPARAM};
 
 pub type RawWndProcCallback =

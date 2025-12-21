@@ -2,11 +2,11 @@
 
 use super::Event;
 use arcdps::{
-    extras::{
-        keybinds::RawKeybindChange, message::SquadMessage, user::to_user_info_iter, UserInfo,
-        UserInfoIter,
-    },
     Language,
+    extras::{
+        UserInfo, UserInfoIter, keybinds::RawKeybindChange, message::SquadMessage,
+        user::to_user_info_iter,
+    },
 };
 
 /// Unofficial Extras squad update event.

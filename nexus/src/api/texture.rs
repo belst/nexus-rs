@@ -1,8 +1,8 @@
 //! Texture loading.
 
 use crate::{
-    util::{path_to_c, str_to_c},
     AddonApi, TextureApi,
+    util::{path_to_c, str_to_c},
 };
 use std::{
     ffi::{c_char, c_void},

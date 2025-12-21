@@ -15,9 +15,9 @@ pub mod rtapi;
 pub use self::nexus::*;
 
 #[cfg(feature = "mumble")]
-pub use self::mumble::{get_mumble_link, get_mumble_link_ptr, read_mumble_link, MumbleLink};
+pub use self::mumble::{MumbleLink, get_mumble_link, get_mumble_link_ptr, read_mumble_link};
 
-use crate::{util::str_to_c, AddonApi, DataLinkApi};
+use crate::{AddonApi, DataLinkApi, util::str_to_c};
 use std::{
     ffi::{c_char, c_void},
     mem,

@@ -1,12 +1,12 @@
-use crate::log::{log, LogLevel};
+use crate::log::{LogLevel, log};
 use std::{
     backtrace::Backtrace,
     ffi::CString,
     panic::{self, PanicHookInfo},
 };
 use windows::{
+    Win32::UI::WindowsAndMessaging::{MB_ICONERROR, MB_OK, MB_SETFOREGROUND, MessageBoxA},
     core::PCSTR,
-    Win32::UI::WindowsAndMessaging::{MessageBoxA, MB_ICONERROR, MB_OK, MB_SETFOREGROUND},
 };
 
 /// Initializes the panic hook.

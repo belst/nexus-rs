@@ -1,5 +1,5 @@
 use proc_macro2::{Span, TokenStream};
-use syn::{parse::Parse, punctuated::Punctuated, Error, Expr, FieldValue, Member, Token};
+use syn::{Error, Expr, FieldValue, Member, Token, parse::Parse, punctuated::Punctuated};
 
 pub struct AddonInfo {
     pub signature: Expr,
@@ -44,7 +44,7 @@ impl AddonInfo {
                         return Err(Error::new_spanned(
                             ident,
                             "log_filter requires feature \"log_filter\"",
-                        ))
+                        ));
                     }
 
                     _ => return Err(Error::new_spanned(ident, "unknown field {ident}")),

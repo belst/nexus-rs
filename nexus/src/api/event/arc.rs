@@ -2,7 +2,7 @@
 
 use super::Event;
 use arcdps::evtc::{self, Agent};
-use std::ffi::{c_char, CStr};
+use std::ffi::{CStr, c_char};
 
 /// ArcDPS EVTC combat local event.
 pub const COMBAT_LOCAL: Event<CombatData> =

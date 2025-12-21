@@ -1,13 +1,13 @@
 use nexus::{
+    AddonFlags, UpdateProvider,
     event::{arc::ACCOUNT_NAME, event_subscribe},
     event_consume,
-    gui::{register_render, render, RenderType},
-    imgui::{sys::cty::c_char, Window},
+    gui::{RenderType, register_render, render},
+    imgui::{Window, sys::cty::c_char},
     keybind::{keybind_handler, register_keybind_with_string},
     paths::get_addon_dir,
     quick_access::{add_quick_access, add_quick_access_context_menu},
-    texture::{load_texture_from_file, texture_receive, Texture},
-    AddonFlags, UpdateProvider,
+    texture::{Texture, load_texture_from_file, texture_receive},
 };
 use std::{cell::Cell, ffi::CStr};
 

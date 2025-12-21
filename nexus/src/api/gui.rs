@@ -1,6 +1,6 @@
 //! [ImGui](https://github.com/ocornut/imgui) rendering via [`imgui-rs`](crate::imgui).
 
-use crate::{util::str_to_c, AddonApi, RendererApi, Revertible, UiApi};
+use crate::{AddonApi, RendererApi, Revertible, UiApi, util::str_to_c};
 use std::ffi::{c_char, c_void};
 
 /// ImGui version.

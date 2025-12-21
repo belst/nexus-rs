@@ -1,10 +1,10 @@
 //! Quick access creation.
 
 use crate::{
+    AddonApi, QuickAccessApi,
     gui::RawGuiRender,
     revertible::Revertible,
-    util::{str_to_c, OptionCStrExt},
-    AddonApi, QuickAccessApi,
+    util::{OptionCStrExt, str_to_c},
 };
 use std::ffi::c_char;
 

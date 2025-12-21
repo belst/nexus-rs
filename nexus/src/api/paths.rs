@@ -1,8 +1,8 @@
 //! Paths.
 
 use crate::{
-    util::{path_from_c, str_to_c},
     AddonApi, PathApi,
+    util::{path_from_c, str_to_c},
 };
 use std::{ffi::c_char, path::PathBuf};
 

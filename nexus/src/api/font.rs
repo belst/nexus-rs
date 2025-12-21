@@ -1,8 +1,8 @@
 //! Font loading.
 
 use crate::{
-    util::{path_to_c, str_to_c, OptionRefExt},
     AddonApi, FontApi, Revertible,
+    util::{OptionRefExt, path_to_c, str_to_c},
 };
 use imgui::sys::{ImFont, ImFontConfig};
 use std::{

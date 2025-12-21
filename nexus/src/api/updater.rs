@@ -1,6 +1,6 @@
 //! Update management.
 
-use crate::{util::str_to_c, AddonApi};
+use crate::{AddonApi, util::str_to_c};
 use std::ffi::c_char;
 
 pub type RawRequestUpdate = unsafe extern "C-unwind" fn(signature: i32, update_url: *const c_char);
