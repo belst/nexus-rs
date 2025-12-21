@@ -27,12 +27,14 @@ impl WorldData {
     /// # Safety
     /// The pointer must be safe to read from.
     pub unsafe fn read(data: *const RealTimeData) -> Self {
-        Self {
-            time_of_day: (*data).time_of_day.try_into(),
-            map_id: (*data).map_id,
-            map_type: (*data).map_type.try_into(),
-            ip_address: (*data).ip_address.into(),
-            cursor: (*data).cursor,
+        unsafe {
+            Self {
+                time_of_day: (*data).time_of_day.try_into(),
+                map_id: (*data).map_id,
+                map_type: (*data).map_type.try_into(),
+                ip_address: (*data).ip_address.into(),
+                cursor: (*data).cursor,
+            }
         }
     }
 }

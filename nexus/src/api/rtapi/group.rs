@@ -1,7 +1,7 @@
 use super::RealTimeData;
 use bitfields::bitfield;
 use num_enum::{IntoPrimitive, TryFromPrimitive};
-use std::ffi::{c_char, CStr};
+use std::ffi::{CStr, c_char};
 
 #[derive(Debug, Copy, Clone)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
@@ -22,10 +22,12 @@ impl GroupData {
     /// # Safety
     /// The pointer must be safe to read from.
     pub unsafe fn read(data: *const RealTimeData) -> Self {
-        Self {
-            squad_markers: (*data).squad_markers,
-            group_type: (*data).group_type.try_into(),
-            group_member_count: (*data).group_member_count,
+        unsafe {
+            Self {
+                squad_markers: (*data).squad_markers,
+                group_type: (*data).group_type.try_into(),
+                group_member_count: (*data).group_member_count,
+            }
         }
     }
 }

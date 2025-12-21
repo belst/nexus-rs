@@ -28,7 +28,7 @@ pub unsafe fn init(
     addon_name: &'static str,
     _log_filter: Option<&'static str>,
 ) {
-    let api = api.as_ref().expect("no addon api supplied");
+    let api = unsafe { api.as_ref() }.expect("no addon api supplied");
     ADDON_API
         .set(api)
         .expect("addon api initialized multiple times");
@@ -42,8 +42,10 @@ pub unsafe fn init(
     NexusLogger::set_logger(addon_name, _log_filter);
 
     // setup imgui
-    imgui::sys::igSetCurrentContext(api.imgui_context);
-    imgui::sys::igSetAllocatorFunctions(api.imgui_malloc, api.imgui_free, ptr::null_mut());
+    unsafe {
+        imgui::sys::igSetCurrentContext(api.imgui_context);
+        imgui::sys::igSetAllocatorFunctions(api.imgui_malloc, api.imgui_free, ptr::null_mut());
+    }
     IMGUI_CTX
         .set(imgui::Context::current().into())
         .expect("imgui context initialized multiple times");

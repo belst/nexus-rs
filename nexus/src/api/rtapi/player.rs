@@ -36,19 +36,21 @@ impl PlayerData {
     /// # Safety
     /// The pointer must be safe to read from.
     pub unsafe fn read(data: *const RealTimeData) -> Self {
-        Self {
-            account_name: CStr::from_ptr((*data).account_name.as_ptr())
-                .to_string_lossy()
-                .into_owned(),
-            character_name: CStr::from_ptr((*data).account_name.as_ptr())
-                .to_string_lossy()
-                .into_owned(),
-            character_position: (*data).character_position,
-            character_facing: (*data).character_facing,
-            profession: (*data).profession,
-            elite_specialization: (*data).elite_specialization,
-            mount_index: (*data).mount_index,
-            character_state: CharacterState::from_bits_retain((*data).character_state),
+        unsafe {
+            Self {
+                account_name: CStr::from_ptr((*data).account_name.as_ptr())
+                    .to_string_lossy()
+                    .into_owned(),
+                character_name: CStr::from_ptr((*data).account_name.as_ptr())
+                    .to_string_lossy()
+                    .into_owned(),
+                character_position: (*data).character_position,
+                character_facing: (*data).character_facing,
+                profession: (*data).profession,
+                elite_specialization: (*data).elite_specialization,
+                mount_index: (*data).mount_index,
+                character_state: CharacterState::from_bits_retain((*data).character_state),
+            }
         }
     }
 }

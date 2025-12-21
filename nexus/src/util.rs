@@ -1,7 +1,7 @@
 #![allow(clippy::missing_safety_doc)]
 
 use std::{
-    ffi::{c_char, CStr, CString},
+    ffi::{CStr, CString, c_char},
     path::{Path, PathBuf},
     ptr,
 };
@@ -10,7 +10,7 @@ use std::{
 #[inline]
 pub unsafe fn str_from_c<'a>(ptr: *const c_char) -> Option<&'a str> {
     if !ptr.is_null() {
-        CStr::from_ptr(ptr).to_str().ok()
+        unsafe { CStr::from_ptr(ptr) }.to_str().ok()
     } else {
         None
     }
@@ -19,13 +19,13 @@ pub unsafe fn str_from_c<'a>(ptr: *const c_char) -> Option<&'a str> {
 /// Helper to convert a C string pointer to a [`String`].
 #[inline]
 pub unsafe fn string_from_c(ptr: *const c_char) -> Option<String> {
-    str_from_c(ptr).map(ToOwned::to_owned)
+    unsafe { str_from_c(ptr) }.map(ToOwned::to_owned)
 }
 
 /// Helper to convert a C string pointer to a [`PathBuf`].
 #[inline]
 pub unsafe fn path_from_c(ptr: *const c_char) -> Option<PathBuf> {
-    str_from_c(ptr).map(PathBuf::from)
+    unsafe { str_from_c(ptr) }.map(PathBuf::from)
 }
 
 /// Attempts to convert a string to a [`CString`].

@@ -59,7 +59,7 @@ impl RealTimeApi {
     /// See [NonNull::as_ref].
     #[inline]
     pub unsafe fn as_ref(&self) -> &RealTimeData {
-        self.0.as_ref()
+        unsafe { self.0.as_ref() }
     }
 
     /// Checks whether the link is active.

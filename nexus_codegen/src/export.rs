@@ -1,6 +1,6 @@
 use crate::addon::AddonInfo;
 use proc_macro2::TokenStream;
-use quote::{quote, ToTokens};
+use quote::{ToTokens, quote};
 use std::env;
 use syn::Expr;
 
@@ -121,10 +121,6 @@ impl AddonInfo {
         #[cfg(not(feature = "log_filter"))]
         let log_filter = quote! { ::std::option::Option::None };
 
-        let initfn = {
-            quote! { ::nexus::__macro::init(api, self::__ADDON_NAME, #log_filter); }
-        };
-
         let load = self.generate_load();
         let unload = self.generate_unload();
 
@@ -155,13 +151,13 @@ impl AddonInfo {
                     update_link: #update_link,
                 };
 
-                #[no_mangle]
+                #[unsafe(no_mangle)]
                 unsafe extern "system-unwind" fn GetAddonDef() -> *const ::nexus::addon::AddonDefinition {
                     &self::__ADDON_DEF
                 }
 
                 unsafe extern "C-unwind" fn __load_wrapper(api: *const ::nexus::AddonApi) {
-                    #initfn
+                    ::nexus::__macro::init(api, self::__ADDON_NAME, #log_filter);
                     #load
                 }
 

@@ -22,11 +22,13 @@ impl CameraData {
     /// # Safety
     /// The pointer must be safe to read from.
     pub unsafe fn read(data: *const RealTimeData) -> Self {
-        Self {
-            camera_position: (*data).camera_position,
-            camera_facing: (*data).camera_facing,
-            camera_fov: (*data).camera_fov,
-            is_action_camera: (*data).is_action_camera.is_action_camera(),
+        unsafe {
+            Self {
+                camera_position: (*data).camera_position,
+                camera_facing: (*data).camera_facing,
+                camera_fov: (*data).camera_fov,
+                is_action_camera: (*data).is_action_camera.is_action_camera(),
+            }
         }
     }
 }

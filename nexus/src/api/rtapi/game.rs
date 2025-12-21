@@ -20,10 +20,12 @@ impl GameData {
     /// # Safety
     /// The pointer must be safe to read from.
     pub unsafe fn read(data: *const RealTimeData) -> Self {
-        Self {
-            game_build: (*data).game_build,
-            game_state: (*data).game_state.try_into(),
-            language: (*data).language.try_into(),
+        unsafe {
+            Self {
+                game_build: (*data).game_build,
+                game_state: (*data).game_state.try_into(),
+                language: (*data).language.try_into(),
+            }
         }
     }
 }
