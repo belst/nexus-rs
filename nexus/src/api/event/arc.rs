@@ -55,7 +55,7 @@ pub const SQUAD_LEAVE: Event<AgentUpdate> = unsafe { Event::new("EV_ARCDPS_SQUAD
 /// ArcDPS target changed event.
 ///
 /// Events of this type are triggered when you target an agent.
-/// The last event can be retriggered on demand by addons sending an [`REPLAY_TARGET_CHAGNED`] event.
+/// The last event can be retriggered on demand by addons sending an [`REPLAY_TARGET_CHANGED`] event.
 pub const TARGET_CHANGED: Event<AgentUpdate> = unsafe { Event::new("EV_ARCDPS_TARGET_CHANGED") };
 
 /// Replays the [`TARGET_CHANGED`] event for the current target.
